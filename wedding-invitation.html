@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адилет & Жибек | Мы женимся!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #f7f3f2;
+            color: #4b4453;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .text-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .shadow-soft {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Animation for hearts */
+        .hearts-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            background: rgba(168, 127, 135, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            animation: heart-float linear infinite;
+        }
+        .heart:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            left: 10%;
+            animation-duration: 18s;
+            animation-delay: 2s;
+        }
+        .heart:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            left: 60%;
+            animation-duration: 15s;
+            animation-delay: 0s;
+        }
+        .heart:nth-child(3) {
+            width: 25px;
+            height: 25px;
+            left: 80%;
+            animation-duration: 20s;
+            animation-delay: 5s;
+        }
+        .heart:nth-child(4) {
+            width: 18px;
+            height: 18px;
+            left: 35%;
+            animation-duration: 16s;
+            animation-delay: 3s;
+        }
+        .heart:nth-child(5) {
+            width: 22px;
+            height: 22px;
+            left: 45%;
+            animation-duration: 22s;
+            animation-delay: 7s;
+        }
+        
+        @keyframes heart-float {
+            0% {
+                transform: translateY(0) scale(0.8) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* New balloon animation */
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: #a87f87;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            animation: balloon-float linear infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            width: 2px;
+            height: 20px;
+            background: #a87f87;
+        }
+
+        .balloon:nth-child(6) {
+            left: 20%;
+            animation-duration: 25s;
+            animation-delay: 1s;
+        }
+        .balloon:nth-child(7) {
+            left: 70%;
+            animation-duration: 30s;
+            animation-delay: 6s;
+        }
+        .balloon:nth-child(8) {
+            left: 40%;
+            animation-duration: 28s;
+            animation-delay: 4s;
+        }
+
+        @keyframes balloon-float {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-8">
+    <div class="hearts-animation">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-soft max-w-2xl w-full p-6 sm:p-10 text-center relative overflow-hidden">
+        <div class="relative z-10 space-y-8">
+            <h1 class="text-3xl sm:text-5xl font-thin tracking-wider mt-4">Приглашение на Свадьбу</h1>
+            <h2 class="text-6xl sm:text-7xl text-[#a87f87] font-bold tracking-widest leading-none">
+                Адилет и Жибек
+            </h2>
+            <div class="space-y-4">
+                <p class="text-lg sm:text-xl font-light">
+                    С огромной радостью приглашаем вас на главное событие в нашей жизни — день, когда наши сердца соединятся навсегда.
+                </p>
+                <img src="https://i.ibb.co/1tx4gYzp/photo-2025-09-14-15-29-26.jpg" alt="Фотография Адилет и Жибек" class="w-full rounded-2xl shadow-md">
+            </div>
+            
+            <div class="bg-[#f0e8e6] rounded-2xl p-6 sm:p-8 space-y-4">
+                <p class="text-xl sm:text-2xl font-light">
+                    Мы верим, что ваше присутствие сделает этот день по-настоящему особенным.
+                </p>
+                <div class="text-xl sm:text-3xl font-normal">
+                    <p>
+                        <span id="countdown"></span>
+                    </p>
+                </div>
+                <div class="border-t border-b border-[#a87f87] py-4">
+                    <p class="text-xl sm:text-2xl font-medium">
+                        22 октября 2025 года
+                    </p>
+                    <p class="text-lg sm:text-xl font-normal">
+                        17:00
+                    </p>
+                </div>
+                <p class="text-base sm:text-lg">
+                    Мы будем рады видеть вас по адресу:<br>
+                    <span class="font-medium">Ресторан "Sultan Hall", Улица Фрунзе, 109а</span>
+                </p>
+                <a href="https://2gis.kg/bishkek/firm/70000001051289949?m=74.448161%2C42.873439%2F18" target="_blank" class="inline-block mt-4 text-[#a87f87] hover:text-[#916b72] transition-colors duration-300 font-semibold underline">
+                    Посмотреть на карте
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Set the date we're counting down to
+            const countdownDate = new Date("Oct 22, 2025 17:00:00").getTime();
+            const countdownElement = document.getElementById("countdown");
+
+            // Update the count down every 1 second
+            let x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `До свадьбы осталось: <br>${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    countdownElement.innerHTML = "Праздник уже начался!";
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
